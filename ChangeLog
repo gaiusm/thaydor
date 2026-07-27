@@ -1,5 +1,12 @@
 
 2026-07-28  Gaius Mulley  <gaiusmod2@gmail.com>
 
+	* maps: New directory.
+	* maps/star: New file.
+	* maps/m1: New file.
+	* maps/m2: New file.
+
+2026-07-28  Gaius Mulley  <gaiusmod2@gmail.com>
+
 	* First commit in of server, client and botml.
 	Forked from penguin-tower.
