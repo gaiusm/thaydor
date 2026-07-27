@@ -1,0 +1,205 @@
+DEFINITION MODULE Screen ;  (*!m2iso+gm2*)
+
+(*
+    Title      : Screen
+    Author     : Gaius Mulley
+    System     : GNU Modula-2
+    Date       : Thu May 28 13:27:54 2026
+    Revision   : $Version$
+    Description:
+*)
+
+
+(*
+   Wall -
+*)
+
+PROCEDURE Wall (x0, y0, x1, y2: CARDINAL) ;
+
+
+(*
+   DoorSecret -
+*)
+
+PROCEDURE DoorSecret (x0, y0, x1, y1: CARDINAL) ;
+
+
+(*
+   DoorGoggled -
+*)
+
+PROCEDURE DoorGoggled (x0, y0, x1, y1: CARDINAL;
+                       horiz: BOOLEAN) ;
+
+
+(*
+   DrawMan -
+*)
+
+PROCEDURE DrawMan (x, y: CARDINAL; dir: CARDINAL; self: BOOLEAN) ;
+
+
+(*
+   Treasure -
+*)
+
+PROCEDURE Treasure (x, y: CARDINAL) ;
+
+
+(*
+   DrawLineDefault -
+*)
+
+PROCEDURE DrawLineDefault (x0, y0, x1, y1: CARDINAL) ;
+
+
+(*
+   DrawPointDefault -
+*)
+
+PROCEDURE DrawPointDefault (x, y: CARDINAL) ;
+
+
+(*
+   DoorClosed -
+*)
+
+PROCEDURE DoorClosed (x0, y0, x1, y1: CARDINAL) ;
+
+
+(*
+   DoorPointClosed -
+*)
+
+PROCEDURE DoorPointClosed (x, y: CARDINAL) ;
+
+
+(*
+   DoorClosedToOpen -
+*)
+
+PROCEDURE DoorClosedToOpen (x0, y0, x1, y1: CARDINAL; horiz: BOOLEAN) ;
+
+
+(*
+   DoorOpenToClosed -
+*)
+
+PROCEDURE DoorOpenToClosed (x0, y0, x1, y1: CARDINAL; horiz: BOOLEAN) ;
+
+
+(*
+   DoorClosedToTimed -
+*)
+
+PROCEDURE DoorClosedToTimed (x0, y0, x1, y1: CARDINAL; horiz: BOOLEAN) ;
+
+
+(*
+   DoorTimedToClosed -
+*)
+
+PROCEDURE DoorTimedToClosed (x0, y0, x1, y1: CARDINAL; horiz: BOOLEAN) ;
+
+
+(*
+   DoorSecretToClosed
+*)
+
+PROCEDURE DoorSecretToClosed (x0, y0, x1, y1: CARDINAL; horiz: BOOLEAN) ;
+
+
+(*
+   Arrow - draw an arrow at x y.
+*)
+
+PROCEDURE Arrow (x, y, dir: CARDINAL) ;
+
+
+(*
+   ArrowRev - write a reverse arrow at x y.
+*)
+
+PROCEDURE ArrowRev (x, y, dir: CARDINAL) ;
+
+
+(*
+   MakeAnimWalk - step is the current step in the sequence 1..total.
+                  total is the amount the user has requested.
+                  clientsteps is the number of steps the client should
+                  perform.  Normally this will be 1.
+*)
+
+PROCEDURE MakeAnimWalk (fromx, fromy, tox, toy,
+                        step, clientsteps, total,
+                        delay, dir: CARDINAL;
+                        self: BOOLEAN) ;
+
+(*
+   MakeEraseMan
+*)
+
+PROCEDURE MakeEraseMan (x, y: CARDINAL; self: BOOLEAN) ;
+
+
+(*
+   Pulse - called on a select timeout.
+*)
+
+PROCEDURE Pulse ;
+
+
+(*
+   ExpidateAnim - skips to the end of all animations and
+                  draws the final image.
+*)
+
+PROCEDURE ExpidateAnim ;
+
+
+(*
+   Hud - update the heads up display at line with
+         title and amount.
+*)
+
+PROCEDURE Hud (line: CARDINAL; Title, Amount: ARRAY OF CHAR) ;
+
+
+(*
+   Clear - clear the screen, this will immediately
+           flush any animations.
+*)
+
+PROCEDURE Clear ;
+
+
+(*
+   RestCursor - places the cursor at the bottom right of the screen.
+*)
+
+PROCEDURE RestCursor ;
+
+
+(*
+   DrawLineDebug - draw a line x0, y0 -> x1, y1 with the
+                   debugging colour.
+*)
+
+PROCEDURE DrawLineDebug (x0, y0, x1, y1: CARDINAL) ;
+
+
+(*
+   dWriteStr - write a string contents.
+*)
+
+PROCEDURE dWriteStr (contents: ARRAY OF CHAR) ;
+
+
+(*
+   dWriteLn - write a string contents and a newline.
+*)
+
+PROCEDURE dWriteLn (contents: ARRAY OF CHAR) ;
+
+
+END Screen.

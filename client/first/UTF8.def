@@ -1,0 +1,89 @@
+(* UTF8.def provides a UTF8 data type and basic manipulation procedures.
+
+Copyright (C) 2026 Free Software Foundation, Inc.
+Contributed by Gaius Mulley <gaiusmod2@gmail.com>.
+
+This file is part of GNU Modula-2.
+
+GNU Modula-2 is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 3, or (at your option)
+any later version.
+
+GNU Modula-2 is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details.
+
+Under Section 7 of GPL version 3, you are granted additional
+permissions described in the GCC Runtime Library Exception, version
+3.1, as published by the Free Software Foundation.
+
+You should have received a copy of the GNU General Public License and
+a copy of the GCC Runtime Library Exception along with this program;
+see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
+<http://www.gnu.org/licenses/>.  *)
+
+DEFINITION MODULE UTF8 ;  (*!m2iso+gm2*)
+
+(*
+    Title      : UTF8
+    Author     : Gaius Mulley
+    System     : GNU Modula-2
+    Date       : Wed May 27 11:50:33 2026
+    Revision   : $Version$
+    Description: Provides basic UTF8 character creation and destruction.
+*)
+
+FROM FIO IMPORT File ;
+FROM DynamicStrings IMPORT String ;
+
+TYPE
+   UTF8 ;
+
+
+(*
+   InitUTF8 - initialize a UTF8 object and return it.
+*)
+
+PROCEDURE InitUTF8 (ch: CARDINAL) : UTF8 ;
+
+
+(*
+   InitUnicode - initialize a UTF8 object using an array of char.
+                 For example 'U+1F9F1'.
+*)
+
+PROCEDURE InitUnicode (a: ARRAY OF CHAR) : UTF8 ;
+
+
+(*
+   StringInitUTF8 - init a single unicode object defined in string
+                    to a UTF8 object.
+*)
+
+PROCEDURE StringInitUTF8 (s: String) : UTF8 ;
+
+
+(*
+   KillUTF8 - places utf8 onto the freelist and return NIL.
+*)
+
+PROCEDURE KillUTF8 (utf8: UTF8) : UTF8 ;
+
+
+(*
+   Write - write a UTF8 object to file f.
+*)
+
+PROCEDURE Write (f: File; utf8: UTF8) ;
+
+
+(*
+   WriteLn - write a newline to file f.
+*)
+
+PROCEDURE WriteLn (f: File) ;
+
+
+END UTF8.

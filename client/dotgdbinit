@@ -1,0 +1,8 @@
+set history save on
+break stop
+break exit
+break m2pim_M2RTS_PointerNilException
+# break WriteNamedPipe
+# break DumpQueue
+# break Screen_MakeAnimWalk
+run -d debugfile -o log

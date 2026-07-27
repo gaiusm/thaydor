@@ -1,0 +1,19 @@
+DEFINITION MODULE Bot ;
+
+(*
+    Title      : Bot
+    Author     : Gaius Mulley
+    System     : GNU Modula-2
+    Date       : Sat Jan 31 09:34:18 2026
+    Revision   : $Version$
+    Description: provides a very simple bot.
+*)
+
+(*
+   Run - connect to the game server and play a game.
+*)
+
+PROCEDURE Run ;
+
+
+END Bot.

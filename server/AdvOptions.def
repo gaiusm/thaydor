@@ -1,0 +1,16 @@
+DEFINITION MODULE Options ;
+
+(*
+    Title      : Options
+    Author     : Gaius Mulley
+    System     : GNU Modula-2
+    Date       : Thu Jan 22 19:37:36 2026
+    Revision   : $Version$
+    Description:
+*)
+
+VAR
+   Debug: BOOLEAN ;
+
+
+END Options.

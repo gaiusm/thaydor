@@ -1,0 +1,34 @@
+#
+#
+#
+handle SIGPIPE nostop noprint pass
+# break AdvSystem.mod:stop
+# break AdvUtil_Dead
+break exit
+break abort
+break m2pim_M2RTS_HALT
+break m2pim_M2RTS_AssignmentException
+break m2pim_M2RTS_ReturnException
+break m2pim_M2RTS_IncException
+break m2pim_M2RTS_DecException
+break m2pim_M2RTS_InclException
+break m2pim_M2RTS_ExclException
+break m2pim_M2RTS_ShiftException
+break m2pim_M2RTS_RotateException
+break m2pim_M2RTS_StaticArraySubscriptException
+break m2pim_M2RTS_DynamicArraySubscriptException
+break m2pim_M2RTS_ForLoopBeginException
+break m2pim_M2RTS_ForLoopToException
+break m2pim_M2RTS_ForLoopEndException
+break m2pim_M2RTS_PointerNilException
+break m2pim_M2RTS_NoReturnException
+break m2pim_M2RTS_CaseException
+break m2pim_M2RTS_WholeNonPosDivException
+break m2pim_M2RTS_WholeNonPosModException
+break m2pim_M2RTS_WholeZeroDivException
+break m2pim_M2RTS_WholeZeroRemException
+break m2pim_M2RTS_WholeValueException
+break m2pim_M2RTS_RealValueException
+break m2pim_M2RTS_ParameterException
+break m2pim_M2RTS_NoException
+run -c ../../penguin-tower-checkpoint @srcdir@/maps/star

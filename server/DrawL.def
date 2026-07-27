@@ -1,0 +1,29 @@
+DEFINITION MODULE DrawL ;
+
+FROM AdvMap IMPORT DoorStatus ;
+
+PROCEDURE DrawRoom ;
+PROCEDURE ClearRoom (r: CARDINAL) ;
+PROCEDURE DrawAllPlayers ;
+PROCEDURE EraseAllPlayers ;
+
+(* and some low level string routines *)
+
+PROCEDURE StrPoint (a: ARRAY OF CHAR; x, y: CARDINAL) ;
+PROCEDURE DTreasure (x, y: CARDINAL) ;
+PROCEDURE Erase (x, y: CARDINAL) ;
+PROCEDURE DrawMan (other: BOOLEAN; x, y, dir: CARDINAL) ;
+PROCEDURE DLine (p: CARDINAL;
+                 x1, y1, x2, y2: CARDINAL;
+                 hinge: BOOLEAN;
+                 From, To: DoorStatus) ;
+PROCEDURE DArrow (x, y, dir: CARDINAL) ;
+
+
+PROCEDURE ReverseArrow (x, y, dir: CARDINAL) ;
+PROCEDURE AnimEraseMan (other: BOOLEAN; x, y: CARDINAL) ;
+PROCEDURE AnimMoveMan (other: BOOLEAN; fromrelx, fromrely, toabsx, toabsy, dir, stepno, total, delay: CARDINAL) ;
+PROCEDURE AnimArrow (fromx, fromy, tox, toy, dir, stepno, total, delay: CARDINAL) ;
+
+
+END DrawL.

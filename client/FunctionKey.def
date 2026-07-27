@@ -1,0 +1,78 @@
+DEFINITION MODULE FunctionKey ;
+
+(*
+    Title      : FunctionKey
+    Author     : Gaius Mulley
+    System     : GNU Modula-2
+    Date       : Tue Jun 16 11:45:56 2026
+    Revision   : $Version$
+    Description: Provides a mechanism to activate a procedure
+                 if a function or arrow key is pressed.
+*)
+
+(*
+   Sequence - return TRUE if ch advances the function
+              key sequence.  If ch is the last character in
+              the function call sequence then the appropriate
+              function call handler is called.
+*)
+
+PROCEDURE Sequence (ch: CHAR) : BOOLEAN ;
+
+
+(*
+   BindFn - associates proc with F[keyno].
+*)
+
+PROCEDURE BindFn (keyno: CARDINAL; proc: PROC) ;
+
+
+(*
+   UnBindFn - removes any procedure associated with F[keyno].
+*)
+
+PROCEDURE UnBindFn (keyno: CARDINAL) ;
+
+
+(*
+   Bind cursor family of keys.
+*)
+
+PROCEDURE BindCursorUp (proc: PROC) ;
+PROCEDURE UnBindCursorUp ;
+PROCEDURE BindCursorDown (proc: PROC) ;
+PROCEDURE UnBindCursorDown ;
+PROCEDURE BindCursorRight (proc: PROC) ;
+PROCEDURE UnBindCursorRight ;
+PROCEDURE BindCursorLeft (proc: PROC) ;
+PROCEDURE UnBindCursorLeft ;
+
+PROCEDURE BindShiftCursorUp (proc: PROC) ;
+PROCEDURE UnBindShiftCursorUp ;
+PROCEDURE BindShiftCursorDown (proc: PROC) ;
+PROCEDURE UnBindShiftCursorDown ;
+PROCEDURE BindShiftCursorRight (proc: PROC) ;
+PROCEDURE UnBindShiftCursorRight ;
+PROCEDURE BindShiftCursorLeft (proc: PROC) ;
+PROCEDURE UnBindShiftCursorLeft ;
+
+PROCEDURE BindAltCursorUp (proc: PROC) ;
+PROCEDURE UnBindAltCursorUp ;
+PROCEDURE BindAltCursorDown (proc: PROC) ;
+PROCEDURE UnBindAltCursorDown ;
+PROCEDURE BindAltCursorRight (proc: PROC) ;
+PROCEDURE UnBindAltCursorRight ;
+PROCEDURE BindAltCursorLeft (proc: PROC) ;
+PROCEDURE UnBindAltCursorLeft ;
+
+PROCEDURE BindCtrlCursorUp (proc: PROC) ;
+PROCEDURE UnBindCtrlCursorUp ;
+PROCEDURE BindCtrlCursorDown (proc: PROC) ;
+PROCEDURE UnBindCtrlCursorDown ;
+PROCEDURE BindCtrlCursorRight (proc: PROC) ;
+PROCEDURE UnBindCtrlCursorRight ;
+PROCEDURE BindCtrlCursorLeft (proc: PROC) ;
+PROCEDURE UnBindCtrlCursorLeft ;
+
+
+END FunctionKey.

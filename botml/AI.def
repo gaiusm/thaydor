@@ -1,0 +1,81 @@
+DEFINITION MODULE AI ;
+
+(*
+    Title      : AI
+    Author     : Gaius Mulley
+    System     : GNU Modula-2
+    Date       : Fri Jan 30 07:36:40 2026
+    Revision   : $Version$
+    Description:
+*)
+
+TYPE
+   Image ;
+
+
+(*
+   InitImage - return a new blank image.
+*)
+
+PROCEDURE InitImage () : Image ;
+
+
+(*
+   ClearImage - erase the image content.
+*)
+
+PROCEDURE ClearImage (im: Image) ;
+
+
+(*
+   CopyImage - copies the image content from src to dest.
+               It copies the bitmap and also score and count.
+*)
+
+PROCEDURE CopyImage (dest, src: Image) ;
+
+
+(*
+   SetCmd - assign the command to image.
+*)
+
+PROCEDURE SetCmd (im: Image; command: ARRAY OF CHAR) ;
+
+
+(*
+   SetScore - set score to image im.
+*)
+
+PROCEDURE SetScore (im: Image; val: INTEGER) ;
+
+
+(*
+   Plot - places value at position [x, y] in image.
+*)
+
+PROCEDURE Plot (im: Image; x, y: CARDINAL; value: ByteSet) ;
+
+
+(*
+   AddToDB - add image im to the end of the data base of images.
+*)
+
+PROCEDURE AddToDB (im: Image) ;
+
+
+(*
+   FindBest - find the best response to the image and assign the command.
+              It chooses the best from the k nearest neighbours.
+*)
+
+PROCEDURE FindBest (im: Image; k: CARDINAL; VAR command: ARRAY OF CHAR) ;
+
+
+(*
+   CmdPresent - return TRUE if image contains a command.
+*)
+
+PROCEDURE CmdPresent (im: Image) : BOOLEAN ;
+
+
+END AI.

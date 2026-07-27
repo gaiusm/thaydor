@@ -1,0 +1,7 @@
+DEFINITION MODULE AdvCmd ;
+
+
+PROCEDURE ExecuteCommand (ch: CHAR ; VAR Dead: BOOLEAN) ;
+
+
+END AdvCmd.

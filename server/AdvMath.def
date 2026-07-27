@@ -1,0 +1,82 @@
+DEFINITION MODULE AdvMath ;
+
+FROM AdvSystem IMPORT TypeOfEntity ;
+
+CONST
+   MagicKey              =   1 ;  (* Treasure Numbers *)
+   CrystalBall           =   2 ;
+   MagicSpring           =   3 ;
+   SackOfCoal1           =   4 ;
+   SackOfCoal2           =   5 ;
+   HotIron               =   6 ;
+   HandGrenade           =   7 ;
+   MagicSword            =   8 ;
+   MagicShoes            =   9 ;
+   SleepPotion           =  10 ;
+   LumpOfIron            =  11 ;
+   TreasTrove            =  12 ;
+   SpeedPotion           =  13 ;
+   MagicShield           =  14 ;
+   VisionChest           =  15 ;
+   QuiverNormal          =  16 ;
+   QuiverMagic           =  17 ;
+   HealingPotion         =  18 ;
+   GlobalPositionSystem  =  19 ;
+   EndlessQuiver         =  20 ;
+   BlowDart              =  21 ;
+   MagicGoggles          =  22 ;
+
+   MaxNoOfTreasures      =  31 ;  (* An upper limit *)
+   HighFreePool          = MaxNoOfTreasures ;
+   LowFreePool           =  23 ;  (* Start of dynamic treasures. (see AdvMath.def for static list).  *)
+   MaxCard               = 65535 ;  (* Max size of the map.  *)
+
+TYPE
+   FreePool         = [LowFreePool..HighFreePool] ;
+   getQueryCardinal = PROCEDURE () : CARDINAL ;
+   isQueryBoolean   = PROCEDURE () : BOOLEAN ;
+
+
+PROCEDURE UpDateWoundsAndFatigue (p: CARDINAL) ;
+
+PROCEDURE GetDamageByParry () : CARDINAL ;
+
+PROCEDURE GetDamageByAttack () : CARDINAL ;
+
+PROCEDURE GetDamageByThrust () : CARDINAL ;
+
+PROCEDURE GetDefaultWeight () : CARDINAL ;
+
+PROCEDURE GetDamageFirePlayer (player: CARDINAL; magic, dart: BOOLEAN) : CARDINAL ;
+
+PROCEDURE GetRateMove (n: CARDINAL) : CARDINAL ;
+
+PROCEDURE StrengthToParry () : BOOLEAN ;
+
+PROCEDURE StrengthToAttack () : BOOLEAN ;
+
+PROCEDURE StrengthToThrust () : BOOLEAN ;
+
+PROCEDURE StrengthToFireArrow () : BOOLEAN ;
+
+PROCEDURE StrengthToFireMagic () : BOOLEAN ;
+
+PROCEDURE StrengthToMove (n: CARDINAL) : BOOLEAN ;
+
+
+(*
+   GetEntityName - assign Charistic[type].name to typename.
+*)
+
+PROCEDURE GetEntityName (type: TypeOfEntity; VAR typename: ARRAY OF CHAR) ;
+
+PROCEDURE GetEntityWeightDefault (type: TypeOfEntity) : CARDINAL ;
+
+PROCEDURE GetDamageHandGrenade () : CARDINAL ;
+
+PROCEDURE GetDamageHandGrenadePlayer (player: CARDINAL) : CARDINAL ;
+
+PROCEDURE GetDamageHotIron () : CARDINAL ;
+
+
+END AdvMath.

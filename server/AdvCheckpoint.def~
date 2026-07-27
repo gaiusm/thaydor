@@ -1,0 +1,59 @@
+DEFINITION MODULE AdvCheckpoint ;
+
+(*
+    Title      : AdvCheckpoint
+    Author     : Gaius Mulley
+    System     : GNU Modula-2
+    Date       : Wed Jan 21 20:56:16 2026
+    Revision   : $Version$
+    Description: add checkpointing logging of activity.
+*)
+
+
+(*
+   CheckpointWrite - capture a single character of the frame
+                     and buffer it until a checkpoint is reached.
+*)
+
+PROCEDURE CheckpointWrite (ch: CHAR) ;
+
+
+(*
+   CheckpointEnable - enable/disable checkpointing.
+*)
+
+PROCEDURE CheckpointEnable (on: BOOLEAN; dir: String) ;
+
+
+(*
+   CheckpointKill - flush the checkpoint buffer and tag it as a kill.
+                    Player killed someone, record it.
+*)
+
+PROCEDURE CheckpointKill ;
+
+
+(*
+   CheckpointDied - reset the checkpoint buffer.
+*)
+
+PROCEDURE CheckpointDied ;
+
+
+(*
+   CheckpointNewRoom - player has moved into a new room tag this as a newroom.
+*)
+
+PROCEDURE CheckpointNewRoom ;
+
+
+(*
+   CheckpointStatus - write out checkpoint status.
+*)
+
+PROCEDURE CheckpointStatus ;
+
+
+
+
+END AdvCheckpoint.

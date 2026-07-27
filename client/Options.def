@@ -1,0 +1,24 @@
+DEFINITION MODULE Options ;  (*!m2iso+gm2*)
+
+FROM DynamicStrings IMPORT String ;
+
+VAR
+   DebugFile,
+   OutputFile,
+   InputFile,
+   PlayerName,
+   ClassName,
+   MapDir,
+   ServerName: String ;
+   ServerPort: CARDINAL ;
+   Debug     : BOOLEAN ;
+
+
+(*
+   ParseArgs - check the options and configure the program.
+*)
+
+PROCEDURE ParseArgs ;
+
+
+END Options.

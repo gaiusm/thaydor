@@ -1,0 +1,34 @@
+DEFINITION MODULE Options ;
+
+(*
+    Title      : Options
+    Author     : Gaius Mulley
+    System     : GNU Modula-2
+    Date       : Thu Jan 22 19:37:36 2026
+    Revision   : $Version$
+    Description: an argparse style of options.
+*)
+
+FROM DynamicStrings IMPORT String ;
+
+VAR
+   K,
+   ServerPort,
+   Seed      : CARDINAL ;
+   Graphics,
+   Verbose,
+   Debug     : BOOLEAN ;
+   PlayerName,
+   ServerName,
+   CharClass,
+   MapDir    : String ;
+
+
+(*
+   ParseArgs - check the options and configure the program.
+*)
+
+PROCEDURE ParseArgs ;
+
+
+END Options.

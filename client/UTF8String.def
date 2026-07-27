@@ -1,0 +1,14 @@
+DEFINITION MODULE UTF8String ;  (*!m2iso+gm2*)
+
+(*
+    Title      : UTF8String
+    Author     : Gaius Mulley
+    System     : GNU Modula-2
+    Date       : Thu May 28 01:26:55 2026
+    Revision   : $Version$
+    Description:
+*)
+
+
+
+END UTF8String.

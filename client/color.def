@@ -1,0 +1,106 @@
+DEFINITION MODULE color ;
+
+(*
+    Title      : color
+    Author     : Gaius Mulley
+    System     : GNU Modula-2
+    Date       : Mon Apr 20 20:59:31 2020
+    Revision   : $Version$
+    Description: provides a simple ansi colour module for Modula-2.
+*)
+
+
+(*
+   Enable - turn on/off production of color terminal escape strings
+            associated with each procedure.
+*)
+
+PROCEDURE Enable (value: BOOLEAN) ;
+
+
+(*
+   emit an ansi escape code to turn on the colour associated with the
+   name of the procedure.
+*)
+
+PROCEDURE Red ;
+PROCEDURE Green ;
+PROCEDURE Yellow ;
+PROCEDURE Blue ;
+PROCEDURE Magenta ;
+PROCEDURE Cyan ;
+PROCEDURE White ;
+
+
+(*
+   ForegroundRGB6 -
+*)
+
+PROCEDURE ForegroundRGB6 (r, g, b: CARDINAL) ;
+
+
+(*
+   ForegroundGrey - grey should be 0..23.
+*)
+
+PROCEDURE ForegroundGrey (grey: CARDINAL) ;
+
+
+(*
+   BackgroundRGB6 -
+*)
+
+PROCEDURE BackgroundRGB6 (r, g, b: CARDINAL) ;
+
+
+(*
+   BackgroundGrey - grey should be 0..23.
+*)
+
+PROCEDURE BackgroundGrey (grey: CARDINAL) ;
+
+
+(*
+   Default - revert back to the default terminal colour.
+*)
+
+PROCEDURE Default ;
+
+
+(*
+   ForegroundDefault -
+*)
+
+PROCEDURE ForegroundDefault ;
+
+
+(*
+   Clear - clear the screen.
+*)
+
+PROCEDURE Clear ;
+
+
+(*
+   Home - move cursor to the top left.
+*)
+
+PROCEDURE Home ;
+
+
+(*
+   Pos - position cursor at location, x, y on the screen.
+         1, 1 is top left corner.
+*)
+
+PROCEDURE Pos (x, y: CARDINAL) ;
+
+
+(*
+   Reverse - turn on/off reverse video.
+*)
+
+PROCEDURE Reverse (on: BOOLEAN) ;
+
+
+END color.

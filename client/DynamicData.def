@@ -1,0 +1,265 @@
+(* DynamicData.def provides a dynamic data type and procedures.
+
+Copyright (C) 2026 Free Software Foundation, Inc.
+Contributed by Gaius Mulley <gaiusmod2@gmail.com>.
+
+This file is part of GNU Modula-2.
+
+GNU Modula-2 is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 3, or (at your option)
+any later version.
+
+GNU Modula-2 is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details.
+
+Under Section 7 of GPL version 3, you are granted additional
+permissions described in the GCC Runtime Library Exception, version
+3.1, as published by the Free Software Foundation.
+
+You should have received a copy of the GNU General Public License and
+a copy of the GCC Runtime Library Exception along with this program;
+see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
+<http://www.gnu.org/licenses/>.  *)
+
+DEFINITION MODULE DynamicData ;  (*!m2iso+gm2*)
+
+(*
+    Title      : DynamicData
+    System     : GNU Modula-2
+    Date       : Wed May 27 15:07:50 2026
+    Description: provides a mechanism for maintaining sequences of bytes.
+*)
+
+FROM SYSTEM IMPORT BYTE, ADDRESS ;
+
+TYPE
+   ByteSequence ;
+
+
+(*
+   InitByteSequence - creates and returns a ByteSequence type object.
+*)
+
+PROCEDURE InitByteSequence (contents: ARRAY OF BYTE) : ByteSequence ;
+
+
+(*
+   KillByteSequence - frees ByteSequence b and its contents.
+                      NIL is returned.
+*)
+
+PROCEDURE KillByteSequence (b: ByteSequence) : ByteSequence ;
+
+
+(*
+   Fin - finishes with a byte sequence, it calls KillByteSequence with b.
+*)
+
+PROCEDURE Fin (b: ByteSequence) ;
+
+
+(*
+   InitByteSequenceCharStar - initializes and returns a ByteSequence
+                              to contain the C string including the
+                              terminating nul.
+*)
+
+PROCEDURE InitByteSequenceCharStar (charstar: ADDRESS) : ByteSequence ;
+
+
+(*
+   InitByteSequenceBlock - initializes and returns a ByteSequence
+                           to contain the block of bytes determined
+                           by start and high.
+*)
+
+PROCEDURE InitByteSequenceBlock (start: ADDRESS;
+                                 high: CARDINAL) : ByteSequence ;
+
+
+(*
+   InitByteSequenceChar - initializes and returns a ByteSequence
+                          to contain the single character ch.
+*)
+
+PROCEDURE InitByteSequenceChar (ch: CHAR) : ByteSequence ;
+
+
+(*
+   Mark - marks ByteSequence b ready for garbage collection.
+*)
+
+PROCEDURE Mark (b: ByteSequence) : ByteSequence ;
+
+
+(*
+   Length - returns the length of the ByteSequence b.
+*)
+
+PROCEDURE Length (b: ByteSequence) : CARDINAL ;
+
+
+(*
+   ConCat - returns ByteSequence first after the contents of second
+            has been appended.
+*)
+
+PROCEDURE ConCat (first, second: ByteSequence) : ByteSequence ;
+
+
+(*
+   ConCatByte - returns ByteSequence first after byte
+                has been appended.
+*)
+
+PROCEDURE ConCatByte (first: ByteSequence; byte: BYTE) : ByteSequence ;
+
+
+(*
+   Assign - assigns the contents of second into first.
+            ByteSequence first is returned.
+*)
+
+PROCEDURE Assign (first, second: ByteSequence) : ByteSequence ;
+
+
+(*
+   ReplaceByte - returns string b after it has changed all
+                 occurances of from to to.
+*)
+
+PROCEDURE ReplaceByte (b: ByteSequence; from, to: BYTE) : ByteSequence ;
+
+
+(*
+   Dup - duplicate a ByteSequence b returning the copy.
+*)
+
+PROCEDURE Dup (b: ByteSequence) : ByteSequence ;
+
+
+(*
+   Add - returns a new ByteSequence which contains the contents
+         of first and second.
+*)
+
+PROCEDURE Add (first, second: ByteSequence) : ByteSequence ;
+
+
+(*
+   Equal - returns TRUE if ByteSequence left and right are equal.
+*)
+
+PROCEDURE Equal (left, right: ByteSequence) : BOOLEAN ;
+
+
+(*
+   EqualCharStar - returns TRUE if contents of ByteSequence b is
+                   the same as the string charstar.
+                   The byte sequence b must be exactly the same
+                   length as a and include a final nul.
+                   The final nul byte in b is the last byte in
+                   the length.
+*)
+
+PROCEDURE EqualCharStar (b: ByteSequence; a: ADDRESS) : BOOLEAN ;
+
+
+(*
+   EqualArray - returns TRUE if contents of ByteSequence b is the
+                same as the string a.  EqualArray ignores any
+                nul terminator during the comparison.  If b does
+                have a nul terminator EqualArray will return FALSE.
+*)
+
+PROCEDURE EqualArray (b: ByteSequence; a: ARRAY OF CHAR) : BOOLEAN ;
+
+
+(*
+   Mult - returns a new string which is n concatenations of ByteSequence b.
+          If n<=0 then an empty string is returned.
+*)
+
+PROCEDURE Mult (b: ByteSequence; n: CARDINAL) : ByteSequence ;
+
+
+(*
+   Slice - returns a new string which contains the elements
+           low..high-1
+
+           strings start at element 0
+           Slice(b, 0, 2)  will return elements 0, 1 but not 2
+           Slice(b, 1, 3)  will return elements 1, 2 but not 3
+           Slice(b, 2, 0)  will return elements 2..max
+           Slice(b, 3, -1) will return elements 3..max-1
+           Slice(b, 4, -2) will return elements 4..max-2
+*)
+
+PROCEDURE Slice (b: ByteSequence; low, high: INTEGER) : ByteSequence ;
+
+
+(*
+   Index - returns the indice of the first occurance of ch in
+           ByteSequence, s. -1 is returned if byte does not exist.
+           The search starts at position o.
+*)
+
+PROCEDURE Index (b: ByteSequence; byte: BYTE; o: CARDINAL) : INTEGER ;
+
+
+(*
+   RIndex - returns the indice of the last occurance of byte
+            in ByteSequence b.  The search starts at position o.
+            -1 is returned if byte is not found.  The search
+            is performed left to right.
+*)
+
+PROCEDURE RIndex (b: ByteSequence; byte: BYTE; o: CARDINAL) : INTEGER ;
+
+
+(*
+   ReverseIndex - returns the indice of the last occurance of byte
+                  in ByteSequence b.  The search starts at position o
+                  and searches from right to left.  The start position
+                  may be indexed negatively from the right (-1 is the
+                  last index).
+                  The return value if byte is found will always be positive.
+                  -1 is returned if byte is not found.
+*)
+
+PROCEDURE ReverseIndex (b: ByteSequence; byte: BYTE; o: INTEGER) : INTEGER ;
+
+
+(*
+   CopyOut - copies src to dest.
+*)
+
+PROCEDURE CopyOut (VAR dest: ARRAY OF CHAR; src: ByteSequence) ;
+
+
+(*
+   byte - returns the byte, ch, at position, i, in ByteSequence, s.
+          As Slice the index can be negative so:
+
+          byte(b, 0) will return the first byte
+          byte(b, 1) will return the second byte
+          byte(b, -1) will return the last byte
+          byte(b, -2) will return the penultimate byte
+
+          a nul byte is returned if the index is out of range.
+*)
+
+PROCEDURE byte (s: ByteSequence; i: INTEGER) : CHAR ;
+
+
+(*
+   string - returns the C style char * of ByteSequence b.
+*)
+
+PROCEDURE string (b: ByteSequence) : ADDRESS ;
+
+
+END DynamicData.

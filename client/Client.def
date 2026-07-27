@@ -1,0 +1,36 @@
+DEFINITION MODULE Client ;  (*!m2iso+gm2*)
+
+(*
+    Title      : Client
+    Author     : Gaius Mulley
+    System     : GNU Modula-2
+    Date       : Mon May 25 13:52:17 2026
+    Revision   : $Version$
+    Description:
+*)
+
+(*
+   Init - return TRUE if a connection to the server is established.
+*)
+
+PROCEDURE Init () : BOOLEAN ;
+
+
+(*
+   SetupClass - automatically sets up a player using arguments from the
+                command line if necessary.
+*)
+
+PROCEDURE SetupClass ;
+
+
+(*
+   Interpret - interpret the incomming stream of characters
+               from the server, monitor the keyboard and the send
+               character to the server.
+*)
+
+PROCEDURE Interpret ;
+
+
+END Client.

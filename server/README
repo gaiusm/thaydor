@@ -1,0 +1,4 @@
+Most of this code was written in Aug 1985 and Aug 1986.
+Much of the code looks pretty ugly, nevertheless it is a good test
+for GNU Modula-2 and the executive implementation utilizing the
+pthread library.

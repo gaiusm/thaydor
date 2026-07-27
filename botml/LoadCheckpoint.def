@@ -1,0 +1,36 @@
+DEFINITION MODULE LoadCheckpoint ;
+
+(*
+    Title      : LoadCheckpoint
+    Author     : Gaius Mulley
+    System     : GNU Modula-2
+    Date       : Tue Jan 27 08:15:48 2026
+    Revision   : $Version$
+    Description:
+*)
+
+FROM DynamicStrings IMPORT String ;
+
+
+(*
+   LoadDir - loads in all checkpoint files in mapdir.
+*)
+
+PROCEDURE LoadDir (mapdir: String) ;
+
+
+(*
+   Generic - provides a basic generic bot.
+*)
+
+PROCEDURE Generic ;
+
+
+(*
+   Connect - establish a connection to server using socket fd.
+*)
+
+PROCEDURE Connect (fd: INTEGER) ;
+
+
+END LoadCheckpoint.

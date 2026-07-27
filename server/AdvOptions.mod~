@@ -1,0 +1,71 @@
+IMPLEMENTATION MODULE AdvOptions ;
+
+
+(*
+   help -
+*)
+
+PROCEDURE help (code: INTEGER) ;
+BEGIN
+   printf ("Usage %s [-a minroomsize] [-b maxroomsize] [-c mincorridorlength] [-d maxcorridorlength] [-e totalcorridorlength] [-h] [-o outputfile] [-s seed] [-x maxx] [-y maxy]\n", programName) ;
+   printf ("  -a minroomsize            (default is %d)\n", MinRoomLength) ;
+   printf ("  -b maxroomsize            (default is %d)\n", MaxRoomLength) ;
+   printf ("  -c mincorridorsize        (default is %d)\n", MinCorridorLength) ;
+   printf ("  -d maxcorridorsize        (default is %d)\n", MaxCorridorLength) ;
+   printf ("  -e totalcorridorlength    (default is %d)\n", TotalCorridorLength) ;
+   printf ("  -o outputfile             (default is stdout)\n") ;
+   printf ("  -s seed                   (default is %d)\n", GetSeed ()) ;
+   printf ("  -x minx for whole map     (default is %d)\n", MaxX) ;
+   printf ("  -y maxy for whole map     (default is %d)\n", MaxY) ;
+   exit (code)
+END help ;
+
+
+(*
+   HandleOptions -
+*)
+
+PROCEDURE HandleOptions ;
+VAR
+   optind,
+   opterr,
+   optopt: INTEGER ;
+   arg,
+   s, l  : String ;
+   ch    : CHAR ;
+BEGIN
+   l := InitString (':a:b:c:d:e:o:s:hx:y:') ;
+   s := NIL ;
+   arg := NIL ;
+   ch := GetOpt (UnixArgs.GetArgC (), UnixArgs.GetArgV (), l,
+                 arg, optind, opterr, optopt) ;
+   WHILE ch # nul DO
+      CASE ch OF
+
+      'a':  userMinRoomLength := stoc (arg) |
+      'b':  userMaxRoomLength := stoc (arg) |
+      'c':  userMinCorridorLength := stoc (arg) |
+      'd':  userMaxCorridorLength := stoc (arg) |
+      'e':  userTotalCorridorLength := stoc (arg) |
+      'h':  help (0) |
+      'o':  SetOutputFile(arg) |
+      's':  SetSeed (stoc (arg)) |
+      'x':  userX := stoc (arg) |
+      'y':  userY := stoc (arg) |
+      '?':  printf ("illegal option\n") ; help (1)
+
+      ELSE
+         WriteString ("unrecognised option '-") ; Write (ch) ; WriteString ('"') ; WriteLn ;
+         exit (1)
+      END ;
+      arg := KillString (arg) ;
+      ch := GetOpt (UnixArgs.GetArgC (), UnixArgs.GetArgV (), l,
+                    arg, optind, opterr, optopt)
+   END ;
+   CheckLimits
+END HandleOptions ;
+
+
+BEGIN
+   Init
+END AdvOptions.
