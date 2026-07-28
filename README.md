@@ -201,6 +201,12 @@ The client has recently been written and the server has been overhauled
 to implement different character classes, limited animation and many more
 treasures.
 
+This repository has been forked from penguin-tower which contained a
+Python3 client.  The Thaydor server has been extended to coordinate
+minor animations.  The command line client of Thaydor is more
+responsive and requires less dependencies than the Python3/Pygame
+counterpart in penguin-tower.
+
 ## Authors
 Gaius Mulley <gaiusmod2@gmail.com>
 
