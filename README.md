@@ -109,7 +109,8 @@ Gaius Mulley <gaiusmod2@gmail.com>
 
 ## License
 
-This project is licensed under the GPLv3 License - see the LICENSE.md file for details.
+This project is licensed under the GPLv3 License - see the COPYING
+file for details.
 
 ## Acknowledgements
 Inspired by a single player game The Temple of Apshai.
