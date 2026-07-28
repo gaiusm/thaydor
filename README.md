@@ -51,7 +51,7 @@ CTRL Cursor      Turn or fire normal arrow
 't'              thrust with sword
 'u' <no> <ret>   use treasure
 'v'              vault turn
-'x'              fire block dart
+'x'              fire blow dart
 F11              toggle full screen
 F12              toggle animation mode
 ESC ESC          quit
