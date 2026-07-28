@@ -19,12 +19,15 @@ and health (Wounds) will slowly regenerate.
 
 ## User control summary
 
+```
 F1 help
 F2 inventory
 ESC ESC to quit
+```
 
 ### Complete key descriptions
 
+```
 Cursor L/R/U/D   Turn or move one square
 SHIFT Cursor     Move 9 spaces forward or turn
 ALT Cursor       Fire magic arrow forward or move 1 perpendicular
@@ -52,6 +55,7 @@ CTRL Cursor      Turn or fire normal arrow
 F11              toggle full screen
 F12              toggle animation mode
 ESC ESC          quit
+```
 
 [![Product Name Screen Shot][product-screenshot]]
 
