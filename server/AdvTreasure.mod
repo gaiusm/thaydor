@@ -1846,7 +1846,7 @@ BEGIN
    StrCopy ('Magic Arrows', Treasure[QuiverMagic].TreasureName) ;
    StrCopy ('Salve       ', Treasure[HealingPotion].TreasureName) ;
    StrCopy ('GPS         ', Treasure[GlobalPositionSystem].TreasureName) ;
-   StrCopy ('oo Quiver   ', Treasure[EndlessQuiver].TreasureName) ;
+   StrCopy ('Inf Quiver  ', Treasure[EndlessQuiver].TreasureName) ;
    StrCopy ('Blow Dart   ', Treasure[BlowDart].TreasureName) ;
    StrCopy ('MagicGoggles', Treasure[MagicGoggles].TreasureName) ;
 
